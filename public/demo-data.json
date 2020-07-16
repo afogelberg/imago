@@ -1,0 +1,217 @@
+{
+  "layers": [
+    {
+      "id": "covid-deaths",
+      "title": "Covid deaths",
+      "source": "covid-poly",
+      "rules": {
+        "xl": [
+          [
+            "deaths",
+            ">=",
+            10000
+          ]
+        ],
+        "l": [
+          [
+            "deaths",
+            "<",
+            10000
+          ],
+          [
+            "deaths",
+            ">=",
+            1000
+          ]
+        ],
+        "m": [
+          [
+            "deaths",
+            "<",
+            1000
+          ],
+          [
+            "deaths",
+            ">=",
+            100
+          ]
+        ],
+        "s": [
+          [
+            "deaths",
+            "<",
+            100
+          ],
+          [
+            "deaths",
+            ">=",
+            10
+          ]
+        ],
+        "xs": [
+          [
+            "deaths",
+            "<",
+            10
+          ]
+        ]
+      },
+      "styleRules": {
+        "...*": [
+          "stroke-red-900"
+        ],
+        "xl": [
+          "fill-red-800"
+        ],
+        "l": [
+          "fill-red-700"
+        ],
+        "m": [
+          "fill-red-500"
+        ],
+        "s": [
+          "fill-red-300"
+        ],
+        "xs": [
+          "fill-red-200"
+        ],
+        "...": [
+          "fill-blue-500"
+        ]
+      },
+      "styles": {
+        "text-name": {
+          "text": {
+            "text": "${name}"
+          }
+        }
+      }
+    },
+    {
+      "id": "covid-death-numbers",
+      "title": "Covid death numbers",
+      "source": "covid",
+      "rules": {
+        "xl": [
+          [
+            "deaths",
+            ">=",
+            10000
+          ]
+        ],
+        "l": [
+          [
+            "deaths",
+            "<",
+            10000
+          ],
+          [
+            "deaths",
+            ">=",
+            1000
+          ],
+          [
+            "@resolution",
+            "<",
+            15000
+          ]
+        ],
+        "m": [
+          [
+            "deaths",
+            "<",
+            1000
+          ],
+          [
+            "deaths",
+            ">=",
+            100
+          ],
+          [
+            "@resolution",
+            "<",
+            8000
+          ]
+        ],
+        "s": [
+          [
+            "deaths",
+            "<",
+            100
+          ],
+          [
+            "deaths",
+            ">=",
+            10
+          ],
+          [
+            "@resolution",
+            "<",
+            5000
+          ]
+        ],
+        "xs": [
+          [
+            "deaths",
+            "<",
+            10
+          ],
+          [
+            "@resolution",
+            "<",
+            5000
+          ]
+        ]
+      },
+      "styleRules": {
+        "xl": [
+          "circle shape-25 fill-black z-80",
+          "text-sm text-white text-deaths z-90 text-deaths"
+        ],
+        "l": [
+          "circle shape-20 fill-black z-60",
+          "text-sm text-white text-deaths z-70 text-deaths"
+        ],
+        "m": [
+          "circle shape-15 fill-black z-40",
+          "text-sm text-white text-deaths z-50 text-deaths"
+        ],
+        "s": [
+          "circle shape-10 fill-black z-20",
+          "text-sm text-white text-deaths z-30 text-deaths"
+        ],
+        "xs": [
+          "circle shape-9 fill-black z-0",
+          "text-sm text-white text-deaths z-10 text-deaths"
+        ],
+        "...": [
+          ""
+        ]
+      },
+      "styles": {
+        "text-deaths": {
+          "text": {
+            "text": "${deaths}"
+          }
+        }
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "world",
+      "type": "Geojson",
+      "url": "https://openlayers.org/en/latest/examples/data/geojson/countries.geojson"
+    },
+    {
+      "id": "covid",
+      "type": "Geojson",
+      "url": "/covid.geojson"
+    },
+    {
+      "id": "covid-poly",
+      "type": "Geojson",
+      "url": "/covid_poly.geojson"
+    }
+  ]
+}
